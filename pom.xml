@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!-- 继承父包 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -12,8 +13,38 @@
     <artifactId>SpringBoot_J174_04</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <!--<packaging>war</packaging>-->
+    <!-- <packaging>jar</packaging> -->
+    <packaging>pom</packaging>
     <name>SpringBoot_J174_04</name>
     <description>project for Spring Boot</description>
+
+    <!-- 指定maven仓库 -->
+    <repositories><!-- 发现依赖和扩展的远程资源库 -->
+        <!-- maven自己官方仓库 -->
+        <repository>
+            <id>maven</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- 阿里巴巴发布版本仓库 -->
+        <repository>
+            <id>alibaba-opensource</id>
+            <name>alibaba-opensource</name>
+            <url>http://code.alibabatech.com/mvn/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <!-- 阿里巴巴快照版本仓库 -->
+        <repository>
+            <id>alibaba-opensource-snapshot</id>
+            <name>alibaba-opensource-snapshot</name>
+            <url>http://code.alibabatech.com/mvn/snapshots/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
     <properties>
         <java.version>1.8</java.version>
@@ -24,12 +55,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- 打成war包需要的配置-->
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
 
+        <!-- 热启动-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--开启test依赖 start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!--开启aop依赖 start-->
         <dependency>
@@ -38,5 +82,43 @@
         </dependency>
 
     </dependencies>
+    <!--maven的插件-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <defaultGoal>compile</defaultGoal>
+        <!-- 配置java版本 不配置的话默认父类配置的是1.6
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
 
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <mainClass>com.lovo.springboot.StartMain</mainClass>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+-->
+    </build>
 </project>
