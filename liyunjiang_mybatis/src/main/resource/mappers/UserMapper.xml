@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IUserDao">
+    <select id="login" resultType="userBean">
+        select pk_userId userId,f_loginName loginName,f_password password,f_userName userName,f_userStatus userStatus
+        from x_user
+        where f_loginName=#{param1} and f_password=#{param2}
+    </select>
+    <insert id="addUser" parameterType="userBean">
+        insert into x_user values(null,#{loginName},#{password},#{userName},#{userStatus})
+    </insert>
+</mapper>
