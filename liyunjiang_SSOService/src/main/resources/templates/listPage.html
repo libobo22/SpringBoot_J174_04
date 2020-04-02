@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>模板页面333</h1>
+    <span th:text="${user.loginName}"></span>
+    <input type="text" th:value="${user.password}">
+    <hr>
+    fdnknd
+    <div th:object="${user}">
+        <span th:text="*{loginName}"></span>
+        <input type="text" th:value="*{password}">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户信息</title>
+</head>
+<body>
+<div align="center" th:object="${user}">
+    <h1>修改</h1>
+    <form th:action="@{/leaf/updateUser}" method="post">
+        用户编号：<input type="text" name="userId" th:value="*{userId}" readonly="readonly">
+        登录名：<input type="text" name="loginName" th:value="*{loginName}"><br>
+        密码：<input type="text" name="password" th:value="*{password}"><br>
+        用户名：<input type="text" name="userName" th:value="*{userName}" disabled="disabled"><br>
+        <input type="submit">
+    </form>
+</div>
+</body>
+</html>

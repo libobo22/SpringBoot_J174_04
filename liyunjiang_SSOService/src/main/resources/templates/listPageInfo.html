@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>所有用户</h1>
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>登录名</th>
+            <th>密码</th>
+            <th>用户名</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="user,uk:${userList}">
+            <td th:text="${uk.index}"></td>
+            <td th:text="${user.loginName}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.userName}"></td>
+            <td>
+                <a th:href="@{/leaf/updateUserShow(userId=${user.userId})}">修改</a><br>
+                <a th:href="@{/leaf/delUser(userId=${user.userId})}">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
