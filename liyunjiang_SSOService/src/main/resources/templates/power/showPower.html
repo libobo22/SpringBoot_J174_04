@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>权限展示</h1>
+    <h3 th:each="power,uk:${powerList}">
+        <a th:text="${power.perName}" th:href="@{${power.perURL}}"></a>
+    </h3>
+</body>
+</html>

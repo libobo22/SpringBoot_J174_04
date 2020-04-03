@@ -19,7 +19,11 @@ public class GotoPage {
         return mv;
     }
     @RequestMapping("/gotoAddUserPage")
-    public String gotoListPage2(){
+    public String gotoAddUserPage(){
         return "addUserPage";
+    }
+    @RequestMapping("/gotoLogin")
+    public String gotoLogin(){
+        return "power/login";
     }
 }

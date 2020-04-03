@@ -37,6 +37,7 @@ public class LeafUserController {
       ModelAndView mv=new ModelAndView("updateUserPage");
       UserEntity user=userService.findById(userId);
       mv.addObject("user",user);
+
       return mv;
   }
     @RequestMapping("/updateUser")
